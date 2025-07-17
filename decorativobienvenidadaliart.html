@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aliart - Arte con Corazón</title>
+    <style>
+        /* ESTILOS ELEGANTES Y SOFISTICADOS */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap');
+        
+        :root {
+            --dorado: #D4AF37;
+            --beige: #F5F5DC;
+            --gris-oscuro: #333333;
+            --gris-claro: #E8E8E8;
+            --transicion: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--beige);
+            color: var(--gris-oscuro);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://images.unsplash.com/photo-1605106702734-205df224ecce?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 245, 220, 0.85);
+            z-index: -1;
+        }
+        
+        .content {
+            max-width: 700px;
+            padding: 50px;
+            margin: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transicion);
+            border: 15px solid transparent;
+            border-image: linear-gradient(135deg, var(--dorado) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border-image-slice: 1;
+        }
+        
+        .content:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-image: linear-gradient(135deg, var(--dorado) 0%, rgba(212, 175, 55, 0.3) 100%);
+            border-image-slice: 1;
+        }
+        
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            pointer-events: none;
+            border-radius: 2px;
+        }
+        
+        .text-box {
+            position: relative;
+            padding: 30px;
+        }
+        
+        .text-box p {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--gris-oscuro);
+            margin: 0;
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .text-box p::before,
+        .text-box p::after {
+            content: '“';
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            color: var(--dorado);
+            position: absolute;
+            opacity: 0.3;
+            line-height: 0;
+            z-index: -1;
+        }
+        
+        .text-box p::before {
+            top: 40px;
+            left: -15px;
+        }
+        
+        .text-box p::after {
+            content: '”';
+            bottom: -10px;
+            right: -15px;
+        }
+     .firma {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-align: right;
+            margin-top: 30px;
+            color: var(--dorado);
+            font-size: 20px;
+            position: relative;
+            padding-right: 60px;
+        }
+        
+        .firma::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 50px;
+            height: 1px;
+            background: var(--dorado);
+        }
+        
+        .decoracion {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+            color: var(--dorado);
+        }
+        
+        .decoracion.hoja1 {
+            top: 20px;
+            right: 20px;
+            font-size: 80px;
+            transform: rotate(15deg);
+        }
+        
+        .decoracion.hoja2 {
+            bottom: 20px;
+            left: 20px;
+            font-size: 60px;
+            transform: rotate(-10deg);
+        }
+        
+        .esquina {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-color: var(--dorado);
+            border-style: solid;
+            border-width: 0;
+            opacity: 0.5;
+        }
+        
+        .esquina.top-left {
+            top: 20px;
+            left: 20px;
+            border-top-width: 2px;
+            border-left-width: 2px;
+        }
+        
+        .esquina.top-right {
+            top: 20px;
+            right: 20px;
+            border-top-width: 2px;
+            border-right-width: 2px;
+        }
+        
+        .esquina.bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-bottom-width: 2px;
+            border-left-width: 2px;
+        }
+        
+        .esquina.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-bottom-width: 2px;
+            border-right-width: 2px;
+        }
+        
+        /* Animación sutil */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            animation: fadeIn 1s ease-out forwards;
+        }
+          button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            animation: cambioColor 5s infinite alternate;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Animación de cambio de colores */
+        @keyframes cambioColor {
+            0%   { background-color: #4CAF50; } /* Verde */
+            25%  { background-color: #2196F3; } /* Azul */
+            50%  { background-color: #FF9800; } /* Naranja */
+            75%  { background-color: #9C27B0; } /* Morado */
+            100% { background-color: #f44336; } /* Rojo */
+        }
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor-arte {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fffef7; /* Fondo cálido claro */
+  border: 2px dashed #ff9eb5; /* Borde decorativo */
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* ESTILO BASE PARA TODOS LOS PÁRRAFOS */
+.contenedor-arte p {
+  font-family: "Comic Sans MS", "Marker Felt", "Segoe Print", cursive;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #5a3a2a; /* Color café cálido */
+}
+
+/* FRASE ARTESANAL (Estilo manuscrito decorado) */
+.frase-artesanal {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  position: relative;
+  display: inline-block;
+}
+
+.frase-artesanal:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff9eb5, #ffd166, #ff9eb5); /* Subrayado decorativo */
+}
+
+/* FRASE DESTACADA (Énfasis creativo) */
+.frase-destacada {
+  font-size: 22px;
+  font-weight: bold;
+  color: #e74c3c; /* Rojo artístico */
+  transform: rotate(-2deg); /* Inclinación juguetona */
+  display: inline-block;
+  margin-top: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff9c4; /* Fondo amarillo claro */
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
+/* EFECTO HOVER (Opcional) */
+.frase-destacada:hover {
+  transform: rotate(0deg) scale(1.05);
+  transition: all 0.3s ease;
+}
+ .back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    text-decoration: none;
+  }
+  
+  .back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #E55C5C, #FF7B7B);
+  }
+  
+  .back-button:active {
+    transform: translateY(1px);
+  }
+  
+  .back-button::before {
+    content: "←";
+    margin-right: 8px;
+    font-size: 18px;
+  }
+
+    </style>
+</head>
+<body>
+<button class="back-button" onclick="window.location.href='index.html'">Volver al Inicio</button>
+
+<div class="content"> 
+  <div class="text-box" id="text"> <p class="handcrafted-paragraph">
+
+<div class="contenedor-texto-aliart">
+  <p class="p1">Soy una nueva emprendedora que hace lo que más le gusta, lo que le sale del corazón y lo demuestra con arte.  </p>
+  <p class="p2"> Si querés tener un detalle con esa persona que amás,</p>
+  <p class="p3"> porque no regalarle un poquito de arte. Aliart tiene para vos ese regalo que buscas. </p>
+</div>
+
+   </div>
+<button onclick="hablar()">🔊 Escuchar</button>
+
+
+</div> 
+        <!-- Marco decorativo -->
+        <div class="esquina top-left"></div>
+        <div class="esquina top-right"></div>
+        <div class="esquina bottom-left"></div>
+        <div class="esquina bottom-right"></div>
+        
+        <!-- Elementos decorativos elegantes -->
+        <div class="decoracion hoja1">✿</div>
+        <div class="decoracion hoja2">✿</div>
+    </div>
+
+    <script>
+        // JavaScript para interacciones elegantes
+        document.addEventListener('DOMContentLoaded', function() {
+            const content = document.querySelector('.content');
+            
+            // Efecto de aparición progresiva del texto
+            const texto = document.querySelector('.text-box p');
+            const palabras = texto.textContent.split(' ');
+            texto.textContent = '';
+            
+            palabras.forEach((palabra, index) => {
+                const span = document.createElement('span');
+                span.textContent = palabra + ' ';
+                span.style.opacity = '0';
+                span.style.display = 'inline-block';
+                span.style.transition = `opacity 0.5s ease ${index * 0.05}s`;
+                texto.appendChild(span);
+                
+                setTimeout(() => {
+                    span.style.opacity = '1';
+                }, 100);
+            });
+            
+            // Efecto parallax suave
+            window.addEventListener('scroll', function() {
+                const scrollPos = window.scrollY;
+                content.style.transform = `translateY(${scrollPos * 0.1}px)`;
+            });
+            
+            // Efecto hover en las esquinas
+            const esquinas = document.querySelectorAll('.esquina');
+            esquinas.forEach(esquina => {
+                esquina.addEventListener('mouseover', () => {
+                    esquina.style.opacity = '0.8';
+                    esquina.style.transition = 'opacity 0.3s ease';
+                });
+                esquina.addEventListener('mouseout', () => {
+                    esquina.style.opacity = '0.5';
+                });
+            });
+        });
+
+function hablar() {
+  const texto = document.getElementById('text').textContent;
+  const voz = new SpeechSynthesisUtterance(texto);
+  voz.lang = 'es-ES'; // Español de España; puedes cambiarlo a 'es-MX' u otro dialecto
+  speechSynthesis.speak(voz);
+}
+   
+    </script>
+</body>
+</html>
